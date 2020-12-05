@@ -16,11 +16,12 @@ public class FileSearch {
             System.out.println("** found: " + fileName + " in directory :" + file);
             return true;
         }
+
         if(file.isFile()) return false;
         for(File f: Objects.requireNonNull(file.listFiles())){
             System.out.println(" - " + (f.isDirectory() ? "directory: " : "file: ")+ f.getName());
             boolean found = search(f, fileName);
-            if(found) return true;
+            if(found) return true;// if(found) break;
         }
         return false;
     }
